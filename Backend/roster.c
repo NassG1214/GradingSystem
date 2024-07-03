@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<student.c>
+#include <student.c>
 
 #define MAX_STUDENTS 50
 
