@@ -1,13 +1,13 @@
-package com.example.Grading.System;
+package com.gradingSystem.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GradingSystemApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GradingSystemApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

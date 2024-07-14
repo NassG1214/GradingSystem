@@ -1,10 +1,10 @@
-package com.example.Grading.System;
+package com.gradingSystem.project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GradingSystemApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
