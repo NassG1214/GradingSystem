@@ -5,13 +5,21 @@ import java.util.List;
 public class Student{
 
     private static final int MAX_GRADES = 200; // is this a good number?
-    private int pantherID;
+    private Long pantherID;
     private String firstName;
     private String lastName;
     private String password;
     private String email;
     private List<Grade> gradebook;
 
+    public Student(Long pantherID, String firstName, String lastName, String password, String email)
+    {
+        this.pantherID = pantherID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+    }
     public void addGrade(Grade grade){
         if (gradebook.size() <= MAX_GRADES)
             gradebook.add(grade);
@@ -20,11 +28,11 @@ public class Student{
     }
 
     //Getter and Setters
-    public int getPantherID() {
+    public Long getPantherID() {
         return pantherID;
     }
 
-    public void setPantherID(int pantherID) {
+    public void setPantherID(Long pantherID) {
         this.pantherID = pantherID;
     }
 
