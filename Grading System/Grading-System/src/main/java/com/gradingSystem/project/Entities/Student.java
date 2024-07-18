@@ -1,5 +1,5 @@
 package com.gradingSystem.project.Entities;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student{
@@ -19,6 +19,7 @@ public class Student{
         this.lastName = lastName;
         this.password = password;
         this.email = email;
+       // this.gradebook = new ArrayList<>(); not sure if left out on purpose
     }
     public void addGrade(Grade grade){
         if (gradebook.size() <= MAX_GRADES)
