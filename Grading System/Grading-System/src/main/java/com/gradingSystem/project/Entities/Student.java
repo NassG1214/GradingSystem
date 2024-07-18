@@ -1,18 +1,17 @@
 package com.gradingSystem.project.Entities;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Student{
 
     private static final int MAX_GRADES = 200; // is this a good number?
-    private Long pantherID;
+    private int pantherID;
     private String firstName;
     private String lastName;
     private String password;
     private String email;
     private List<Grade> gradebook;
 
-    public Student(Long pantherID, String firstName, String lastName, String password, String email)
+    public Student(int pantherID, String firstName, String lastName, String password, String email)
     {
         this.pantherID = pantherID;
         this.firstName = firstName;
@@ -29,11 +28,11 @@ public class Student{
     }
 
     //Getter and Setters
-    public Long getPantherID() {
+    public int getPantherID() {
         return pantherID;
     }
 
-    public void setPantherID(Long pantherID) {
+    public void setPantherID(int pantherID) {
         this.pantherID = pantherID;
     }
 

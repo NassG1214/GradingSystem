@@ -6,7 +6,7 @@ import java.util.*;
 @Service
 public class StudentService {
     public List<Student> getStudents() {
-        return List.of(new Student(6222222L, "Mike", "OxSmall", "password", "email@gmail.com")
+        return List.of(new Student(6222222, "Mike", "OxSmall", "password", "email@gmail.com")
         );
     }
 }
