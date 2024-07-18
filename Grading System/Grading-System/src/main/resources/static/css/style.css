@@ -1,28 +1,80 @@
-*{
+* {
     padding: 8px;
     margin: 8px;
+    box-sizing: border-box;
 }
 
-@media (max-width: 400px){
-    .Section-wrapper{
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
-@media (max-width: 920px){
-    .Section-wrapper{
-        display: flex;
-        flex-wrap: wrap
-    }
-}
-.LoginSection{
-    flex: 1;
-    height: 250px;
-    width: 250px;
-    border-style: solid;
-    border-color: black;
+
+:root {
+    color-scheme: light dark;
 }
 
-.Section-wrapper{
+body {
+    background-color: #121212;
+    margin: 0;
+    font-family:"Baskervville SC", serif;
+    font-weight: 400;
+    font-style: normal;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Section-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.LoginSection {
+    background-color: #3f3f3f;
+    padding: 16px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    border-color: silver;
+    border-style: solid;
+}
+
+.LoginSection h1 {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.LoginSection form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.LoginSection .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.LoginSection .form-group label {
+    margin-bottom: 8px;
+}
+
+.LoginSection .form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+button:hover {
+    border-color: white;
+    opacity: 80%;
+}
+
+input:hover {
+    border-color: white;
+    opacity: 80%;
+}
+
+@media (max-width: 400px) {
+    .LoginSection {
+        padding: 8px;
+    }
 }
