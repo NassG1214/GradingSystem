@@ -1,60 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Grades</title>
-    <link rel="stylesheet" href="/Student/styles/Student_Grades.css">
-    <script src="/Student/scripts/Student_Grade_Scripts.js"></script>
+    <link th:href="@{/css/Student_Grades.css}" rel="stylesheet">
+    <script th:src="@{/js/Student_Grade_Scripts.js}"></script>
 </head>
 <body>
-    <div class="grades-container">
-        <div class="grades-content">
-            <div class="assignments-section">
-                <h2>Assignments [Weighted 20%]</h2>
-                <table class="assignment-table">
-                    <thead>
-                        <tr>
-                            <th>Assignment</th>
-                            <th>Grade</th>
-                            <th>Max Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody id="assignment-body">
-                        <!-- Rows will be inserted here by JavaScript -->
-                    </tbody>
-                </table>
-                <h2>Exams [Weighted 80%]</h2>
-                <table class="exam-table">
-                    <thead>
-                        <tr>
-                            <th>Exam</th>
-                            <th>Grade</th>
-                            <th>Max Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody id="exam-body">
-                        <!-- Rows will be inserted here by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-            <div class="grades-details">
-                <p>Grade: <span id="grade-letter"></span></p>
-                <p>Grade %: <span id="grade-percentage"></span></p>
-                <p>Anticipated Grade: <input id="anticipated-grade" type="text" placeholder="Enter Grade (A, B, C, D)"></p>
-                <div class="form-actions">
-                    <button id="calculate-assignments">Calculate Assignments</button>
-                    <button id="calculate-exams">Calculate Exams</button>
-                </div>
-                <p>Assignments: <span id="completed-assignments"></span></p>
-                <p>Exams: <span id="completed-exams"></span></p>
-                <p>Required Assignments Grade: <span id="required-assignments"></span></p>
-                <p>Required Exams Grade: <span id="required-exams"></span></p>
-                <button id="reset-button">Reset</button>
-            </div>
+<div class="grades-container">
+    <div class="grades-content">
+        <div class="assignments-section">
+            <h2>Assignments [Weighted 20%]</h2>
+            <table class="assignment-table">
+                <thead>
+                <tr>
+                    <th>Assignment</th>
+                    <th>Grade</th>
+                    <th>Max Grade</th>
+                </tr>
+                </thead>
+                <tbody id="assignment-body">
+                <!-- Rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+            <h2>Exams [Weighted 80%]</h2>
+            <table class="exam-table">
+                <thead>
+                <tr>
+                    <th>Exam</th>
+                    <th>Grade</th>
+                    <th>Max Grade</th>
+                </tr>
+                </thead>
+                <tbody id="exam-body">
+                <!-- Rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
         </div>
-        <button onclick="goBack()">Go Back</button>
+        <div class="grades-details">
+            <p>Grade: <span id="grade-letter"></span></p>
+            <p>Grade %: <span id="grade-percentage"></span></p>
+            <p>Anticipated Grade: <input id="anticipated-grade" type="text" placeholder="Enter Grade (A, B, C, D)"></p>
+            <div class="form-actions">
+                <button id="calculate-assignments">Calculate Assignments</button>
+                <button id="calculate-exams">Calculate Exams</button>
+            </div>
+            <p>Assignments: <span id="completed-assignments"></span></p>
+            <p>Exams: <span id="completed-exams"></span></p>
+            <p>Required Assignments Grade: <span id="required-assignments"></span></p>
+            <p>Required Exams Grade: <span id="required-exams"></span></p>
+            <button id="reset-button">Reset</button>
+        </div>
     </div>
-
-    
+    <button onclick="goBack()">Go Back</button>
+</div>
 </body>
 </html>
