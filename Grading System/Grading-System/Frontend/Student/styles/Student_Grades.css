@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.grades-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.grades-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assignments-section {
+    width: 60%;
+}
+
+.assignments-section h2 {
+    margin-top: 0;
+}
+
+.assignment-table, .exam-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #333;
+}
+
+.assignment-table th, .exam-table th,
+.assignment-table td, .exam-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+.assignment-table th, .exam-table th {
+    background-color: #444;
+}
+
+.grades-details {
+    width: 35%;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.grades-details p {
+    margin: 10px 0;
+}
+
+button {
+    display: block;
+    width: 100px;
+    margin: 20px auto 0;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
