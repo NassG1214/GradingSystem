@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userRole = localStorage.getItem('userRole');
 
     if (userID && userRole === 'student') {
-        fetch('/data/validation_data.json')
+        fetch('/validation_data.json') // Corrected the path to match your setup
             .then(response => response.json())
             .then(data => {
                 const student = data.students.find(stud => stud.id == userID);
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Populate assignments table
                     const assignmentBody = document.getElementById('assignment-body');
-                    assignments.forEach((assignment, index) => {
+                    assignments.forEach((assignment) => {
                         if (assignment.grade === 'NULL') assignment.grade = 0;
                         const row = document.createElement('tr');
                         row.innerHTML = `
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Populate exams table
                     const examBody = document.getElementById('exam-body');
-                    exams.forEach((exam, index) => {
+                    exams.forEach((exam) => {
                         if (exam.grade === 'NULL') exam.grade = 0;
                         const row = document.createElement('tr');
                         row.innerHTML = `
@@ -50,6 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching assignment data:', error));
     } else {
-        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
+        window.location.href = '/LoginPage.html'; // Updated redirect path
     }
 });

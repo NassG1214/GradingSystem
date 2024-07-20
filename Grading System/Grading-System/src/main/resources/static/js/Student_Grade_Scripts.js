@@ -5,13 +5,13 @@ function goBack() {
 let originalGrades = [];
 
 function calculateGrades(assignments, exams) {
-    const totalAssignments = assignments.reduce((total, a) => total + a.maxGrade, 0);
-    const totalAssignmentGrades = assignments.reduce((total, a) => total + (a.grade / 100 * a.maxGrade), 0);
-    const assignmentPercentage = totalAssignmentGrades / totalAssignments * 100;
+    const totalAssignments = assignments.reduce((total, a) => total + (a.maxGrade || 0), 0);
+    const totalAssignmentGrades = assignments.reduce((total, a) => total + ((a.grade || 0) / 100 * (a.maxGrade || 0)), 0);
+    const assignmentPercentage = totalAssignments > 0 ? (totalAssignmentGrades / totalAssignments * 100) : 0;
 
-    const totalExams = exams.reduce((total, e) => total + e.maxGrade, 0);
-    const totalExamGrades = exams.reduce((total, e) => total + (e.grade / 100 * e.maxGrade), 0);
-    const examPercentage = totalExamGrades / totalExams * 100;
+    const totalExams = exams.reduce((total, e) => total + (e.maxGrade || 0), 0);
+    const totalExamGrades = exams.reduce((total, e) => total + ((e.grade || 0) / 100 * (e.maxGrade || 0)), 0);
+    const examPercentage = totalExams > 0 ? (totalExamGrades / totalExams * 100) : 0;
 
     const overallPercentage = (assignmentPercentage * 0.2) + (examPercentage * 0.8);
 
@@ -20,7 +20,7 @@ function calculateGrades(assignments, exams) {
     else if (overallPercentage >= 80) gradeLetter = 'B';
     else if (overallPercentage >= 70) gradeLetter = 'C';
     else if (overallPercentage >= 60) gradeLetter = 'D';
-    
+
     return {
         overallPercentage: overallPercentage.toFixed(2),
         gradeLetter: gradeLetter
@@ -35,8 +35,8 @@ function updateGrades() {
         const cells = row.querySelectorAll('td');
         return {
             name: cells[0].textContent,
-            grade: cells[1].textContent === 'NULL' ? null : parseInt(cells[1].textContent),
-            maxGrade: parseInt(cells[2].textContent)
+            grade: cells[1].textContent === 'NULL' ? null : parseFloat(cells[1].textContent.replace('%', '')),
+            maxGrade: parseFloat(cells[2].textContent)
         };
     });
 
@@ -44,8 +44,8 @@ function updateGrades() {
         const cells = row.querySelectorAll('td');
         return {
             name: cells[0].textContent,
-            grade: cells[1].textContent === 'NULL' ? null : parseInt(cells[1].textContent),
-            maxGrade: parseInt(cells[2].textContent)
+            grade: cells[1].textContent === 'NULL' ? null : parseFloat(cells[1].textContent.replace('%', '')),
+            maxGrade: parseFloat(cells[2].textContent)
         };
     });
 
@@ -58,11 +58,11 @@ function updateGrades() {
 }
 
 function calculateRequiredGrades(assignments, exams, anticipatedPercentage) {
-    const totalAssignments = assignments.reduce((total, a) => total + a.maxGrade, 0);
-    const totalExams = exams.reduce((total, e) => total + e.maxGrade, 0);
+    const totalAssignments = assignments.reduce((total, a) => total + (a.maxGrade || 0), 0);
+    const totalExams = exams.reduce((total, e) => total + (e.maxGrade || 0), 0);
 
-    const currentAssignmentGrades = assignments.reduce((total, a) => total + (a.grade === null ? 0 : a.grade / 100 * a.maxGrade), 0);
-    const currentExamGrades = exams.reduce((total, e) => total + (e.grade === null ? 0 : e.grade / 100 * e.maxGrade), 0);
+    const currentAssignmentGrades = assignments.reduce((total, a) => total + ((a.grade || 0) / 100 * (a.maxGrade || 0)), 0);
+    const currentExamGrades = exams.reduce((total, e) => total + ((e.grade || 0) / 100 * (e.maxGrade || 0)), 0);
 
     const totalGradesNeeded = (anticipatedPercentage / 100) * (totalAssignments * 0.2 + totalExams * 0.8);
     const neededGrades = totalGradesNeeded - (currentAssignmentGrades * 0.2 + currentExamGrades * 0.8);
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userRole = localStorage.getItem('userRole');
 
     if (userID && userRole === 'student') {
-        fetch('/data/validation_data.json')
+        fetch('/static/validation_data.json') // Updated path to validation_data.json
             .then(response => response.json())
             .then(data => {
                 const student = data.students.find(stud => stud.id == userID);
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td>${assignment.name}</td>
-                            <td>${assignment.grade === 'NULL' ? 'NULL' : assignment.grade + '%'}</td>
+                            <td>${assignment.grade === null ? 'NULL' : assignment.grade + '%'}</td>
                             <td>${assignment.maxGrade}</td>
                         `;
                         const gradeCell = row.querySelector('td:nth-child(2)');
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td>${exam.name}</td>
-                            <td>${exam.grade === 'NULL' ? 'NULL' : exam.grade + '%'}</td>
+                            <td>${exam.grade === null ? 'NULL' : exam.grade + '%'}</td>
                             <td>${exam.maxGrade}</td>
                         `;
                         const gradeCell = row.querySelector('td:nth-child(2)');

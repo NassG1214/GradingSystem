@@ -1,6 +1,5 @@
-
 const storageKey = 'Professor_Assignments_Data';
-const validationDataUrl = '/data/validation_data.json';
+const validationDataUrl = '/validation_data.json';
 
 function goBack() {
     window.history.back();
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             student.exams.forEach(exam => {
                                 if (!exams.find(e => e.name === exam.name)) {
-                                    exams.push({ name: exam.name, maxGrade: exam.maxGrade });
+                                    exams.push({ name: e.name, maxGrade: e.maxGrade });
                                 }
                             });
                         }
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching data:', error));
     } else {
-        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
+        window.location.href = '/LoginPage.html'; // Redirect if no valid session
     }
 });
 
@@ -157,17 +156,17 @@ function removeExam() {
 function finalizeChanges() {
     let data = JSON.parse(localStorage.getItem(storageKey));
 
-    fetch('/data/Professor_Assignments.json', {
+    fetch('/Professor_Assignments.json', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.text())
-    .then(message => {
-        console.log(message);
-        alert("Changes finalized and saved to JSON file.");
-    })
-    .catch(error => console.error('Error saving changes:', error));
+        .then(response => response.text())
+        .then(message => {
+            console.log(message);
+            alert("Changes finalized and saved to JSON file.");
+        })
+        .catch(error => console.error('Error saving changes:', error));
 }

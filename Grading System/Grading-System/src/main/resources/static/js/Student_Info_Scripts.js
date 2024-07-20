@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userRole = localStorage.getItem('userRole');
 
     if (userID && userRole === 'student') {
-        fetch('/data/validation_data.json')
+        fetch('/static/validation_data.json') // Updated path to validation_data.json
             .then(response => response.json())
             .then(data => {
                 const student = data.students.find(stud => stud.id == userID);
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching student data:', error));
     } else {
-        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
+        window.location.href = '../LoginPage.html'; // Updated path to LoginPage.html
     }
 });
 

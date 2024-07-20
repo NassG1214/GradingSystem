@@ -1,63 +1,40 @@
 package com.gradingSystem.project.Entities;
+
+import jakarta.persistence.*;
 import java.util.List;
 
-public class Student{
+@Entity
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    private static final int MAX_GRADES = 200; // is this a good number?
-    private int pantherID;
-    private String firstName;
-    private String lastName;
-    private String password;
+    private String name;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private Class classEntity;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Grade> gradebook;
 
-    public Student(int pantherID, String firstName, String lastName, String password, String email)
-    {
-        this.pantherID = pantherID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-       // this.gradebook = new ArrayList<>(); not sure if left out on purpose
-    }
-    public void addGrade(Grade grade){
-        if (gradebook.size() <= MAX_GRADES)
-            gradebook.add(grade);
-        else
-            throw new IllegalStateException("Maximum number of grades reached");
+    // Getters and setters
+
+    public int getId() {
+        return id;
     }
 
-    //Getter and Setters
-    public int getPantherID() {
-        return pantherID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setPantherID(int pantherID) {
-        this.pantherID = pantherID;
+    public String getName() {
+        return name;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -68,12 +45,19 @@ public class Student{
         this.email = email;
     }
 
-    public List<Grade> getGrades() {
+    public Class getClassEntity() {
+        return classEntity;
+    }
+
+    public void setClassEntity(Class classEntity) {
+        this.classEntity = classEntity;
+    }
+
+    public List<Grade> getGradebook() {
         return gradebook;
     }
 
-    public void setGrades(List<Grade> grades) {
-        gradebook = grades;
+    public void setGradebook(List<Grade> gradebook) {
+        this.gradebook = gradebook;
     }
-
 }

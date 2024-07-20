@@ -1,58 +1,36 @@
 package com.gradingSystem.project.Entities;
 
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
 public class Teacher {
-    private static final int MAX_CLASSES = 10; //max classes per teacher
-    private int faculty_ID;
-    private int class_code;
-    private String firstName;
-    private String lastName;
-    private String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String name;
     private String email;
-    Class[] classes;
 
-    Teacher() {
-        classes = new Class[MAX_CLASSES];
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Class> classes;
+
+    // Getters and setters
+
+    public int getId() {
+        return id;
     }
 
-    // Getters and Setters
-    public String getLastName() {
-        return lastName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getName() {
+        return name;
     }
 
-    public int getFaculty_ID() {
-        return faculty_ID;
-    }
-
-    public void setFaculty_ID(int faculty_ID) {
-        this.faculty_ID = faculty_ID;
-    }
-
-    public int getClass_code() {
-        return class_code;
-    }
-
-    public void setClass_code(int class_code) {
-        this.class_code = class_code;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -63,12 +41,11 @@ public class Teacher {
         this.email = email;
     }
 
-    public Class[] getClasses() {
+    public List<Class> getClasses() {
         return classes;
     }
 
-    public void setClasses(Class[] classes) {
+    public void setClasses(List<Class> classes) {
         this.classes = classes;
     }
-
 }

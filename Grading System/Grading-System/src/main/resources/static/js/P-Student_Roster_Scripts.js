@@ -1,4 +1,3 @@
-
 function goBack() {
     window.history.back();
 }
@@ -8,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userRole = localStorage.getItem('userRole');
 
     if (userID && userRole === 'professor') {
-        fetch('/data/validation_data.json')
+        fetch('/validation_data.json') // Corrected the path to match your setup
             .then(response => response.json())
             .then(data => {
                 const professor = data.teachers.find(prof => prof.id == userID);
@@ -33,6 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching student roster:', error));
     } else {
-        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
+        window.location.href = '/LoginPage.html'; // Updated the redirect path
     }
 });

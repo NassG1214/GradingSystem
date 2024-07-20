@@ -1,55 +1,51 @@
 package com.gradingSystem.project.Entities;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Grade {
-    private int classCode;
-    private char gradeLetter;
-    private float percentage;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String assignmentName;
+    private double score;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 
     // Getters and setters
-    public int getClassCode() {
-        return classCode;
+
+    public int getId() {
+        return id;
     }
 
-    public void setClassCode(int classCode) {
-        this.classCode = classCode;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public char getGradeLetter() {
-        return gradeLetter;
+    public String getAssignmentName() {
+        return assignmentName;
     }
 
-    public void setGradeLetter(char gradeLetter) {
-        this.gradeLetter = gradeLetter;
+    public void setAssignmentName(String assignmentName) {
+        this.assignmentName = assignmentName;
     }
 
-    public float getPercentage() {
-        return percentage;
+    public double getScore() {
+        return score;
     }
 
-    public void setPercentage(float percentage) {
-        this.percentage = percentage;
-        this.gradeLetter = percentageToLetter(percentage);
+    public void setScore(double score) {
+        this.score = score;
     }
 
-    private char percentageToLetter(float percentage) {
-        if (percentage >= 95) {
-            return 'A';
-        } else if (percentage >= 90) {
-            return 'A';
-        } else if (percentage >= 87) {
-            return 'B';
-        } else if (percentage >= 83) {
-            return 'B';
-        } else if (percentage >= 80) {
-            return 'B';
-        } else if (percentage >= 77) {
-            return 'C';
-        } else if (percentage >= 70) {
-            return 'C';
-        } else if (percentage >= 60) {
-            return 'D';
-        } else {
-            return 'F';
-        }
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

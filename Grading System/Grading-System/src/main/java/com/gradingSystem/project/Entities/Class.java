@@ -1,17 +1,32 @@
 package com.gradingSystem.project.Entities;
 
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
 public class Class {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public static final int MAX_STUDENTS = 50;
-    public static final int MIN_STUDENTS = 0;
     private String className;
-    private int classID;
-    private String[] students;
-    int numberOfStudents;
+    private int numberOfStudents;
 
-    public Class() {
-        students = new String[MAX_STUDENTS];
-        numberOfStudents = 0;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "classEntity", cascade = CascadeType.ALL)
+    private List<Student> students;
+
+    // Getters and setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getClassName() {
@@ -22,32 +37,27 @@ public class Class {
         this.className = className;
     }
 
-    public int getClassID() {
-        return classID;
-    }
-
-    public void setClassID(int classID) {
-        this.classID = classID;
-    }
-
-    public String[] getStudents() {
-        return students;
-    }
-
-    public void setStudents(String[] students) {
-        this.students = students;
-    }
-
     public int getNumberOfStudents() {
         return numberOfStudents;
     }
 
-    public void addStudent(String student) {
-        if (this.numberOfStudents < MAX_STUDENTS) {
-            this.students[numberOfStudents + 1] = (student);
-            numberOfStudents++;
-        } else {
-            throw new IllegalStateException("Maximum number of students reached");
-        }
+    public void setNumberOfStudents(int numberOfStudents) {
+        this.numberOfStudents = numberOfStudents;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
