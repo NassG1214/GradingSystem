@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assignments</title>
+    <link rel="stylesheet" href="/Student/styles/Student_Assignments_style.css">
+    <script src="/Student/scripts/Student_Assignment_Scripts.js"></script>
+</head>
+<body>
+    <div class="assignments-container">
+        <h1>Assignments Completed: <span id="assignments-number">0</span> Total: <span id="assignments-total">0</span></h1>
+        <table class="assignment-table">
+            <thead>
+                <tr>
+                    <th>Assignment</th>
+                    <th>Grade</th>
+                    <th>Max Grade</th>
+                </tr>
+            </thead>
+            <tbody id="assignment-body">
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <h1>Exams Completed: <span id="exams-number">0</span> Total: <span id="exams-total">0</span></h1>
+        <table class="exam-table">
+            <thead>
+                <tr>
+                    <th>Exam</th>
+                    <th>Grade</th>
+                    <th>Max Grade</th>
+                </tr>
+            </thead>
+            <tbody id="exam-body">
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+    
+</body>
+</html>
