@@ -1,6 +1,6 @@
 // Function to validate login credentials
 function validateLogin(email, password, userType) {
-    return fetch('/validation_data.json')
+    return fetch('/validation_data.json')  // Ensure this URL is correct
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok.');
