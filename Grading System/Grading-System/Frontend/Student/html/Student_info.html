@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Info</title>
+        <link rel="stylesheet" href="/Student/styles/Student_info_style.css">
+        <script src="/Student/scripts/Student_Info_Scripts.js"></script>
+</head>
+<body>
+    <div class="student-info-container">
+        <h1><span id="student-name">[Student Name]</span></h1>
+        <div class="student-details">
+            <div class="student-image">
+                <img id="student-image" src="/assets/StudentImages/default-image.png" alt="Default Image">
+                <br>
+                <form>
+                    <input type="file" id="fileInput" name="filename">
+                </form>
+            </div>
+            <div class="student-text">
+                <p>Student ID: <span id="student-id">[Student ID]</span></p>
+                <p>First Name: <span id="first-name">[First Name]</span></p>
+                <p>Last Name: <span id="last-name">[Last Name]</span></p>
+                <p>E-mail: <span id="email">[Email]</span></p>
+            </div>
+        </div>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+</body>
+</html>

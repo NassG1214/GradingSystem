@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Portal</title>
+        <link rel="stylesheet" href="Login_Page_Style.css">
+        <script src="/Main Page/LoginPage_Script.js"></script>
+</head>
+<body>
+    <section class="Section-wrapper">
+        <section id="sLogin" class="LoginSection">
+            <h1 class="LoginTitle">Login for Students</h1>
+            <form id="student-login-form">
+                <div class="form-group">
+                    <label for="s-email">Email:</label>
+                    <input type="email" name="s-email" id="s-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="s-password">Password:</label>
+                    <input type="password" name="s-password" id="s-password" required>
+                </div>
+                <div class="form-actions">
+                    <button class="Login-btn" type="submit">Login</button>
+                    <button class="Login-btn" type="reset">Clear</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="pLogin" class="LoginSection">
+            <h1 class="LoginTitle">Login for Professors</h1>
+            <form id="professor-login-form">
+                <div class="form-group">
+                    <label for="t-email">Email:</label>
+                    <input type="email" name="t-email" id="t-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="t-password">Password:</label>
+                    <input type="password" name="t-password" id="t-password" required>
+                </div>
+                <div class="form-actions">
+                    <button class="Login-btn" type="submit">Login</button>
+                    <button class="Login-btn" type="reset">Clear</button>
+                </div>
+            </form>
+        </section>
+    </section>
+
+</body>
+</html>
