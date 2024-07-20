@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Portal</title>
     <link th:href="@{/css/Login_Page_Style.css}" rel="stylesheet">
-    <script th:src="@{/js/LoginPage_Script.js}"></script>
+    <script th:src="@{/js/LoginPage_Script.js}" defer></script>
 </head>
 <body>
 <section class="Section-wrapper">
     <section id="sLogin" class="LoginSection">
         <h1 class="LoginTitle">Login for Students</h1>
-        <form id="student-login-form">
+        <form id="studentLoginForm">
             <div class="form-group">
                 <label for="s-email">Email:</label>
                 <input type="email" name="s-email" id="s-email" required>
@@ -29,7 +29,7 @@
 
     <section id="pLogin" class="LoginSection">
         <h1 class="LoginTitle">Login for Professors</h1>
-        <form id="professor-login-form">
+        <form id="professorLoginForm">
             <div class="form-group">
                 <label for="t-email">Email:</label>
                 <input type="email" name="t-email" id="t-email" required>
