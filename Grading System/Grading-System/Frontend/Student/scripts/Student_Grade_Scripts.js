@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching assignment data:', error));
     } else {
-        window.location.href = '../LoginPage.html'; // Redirect if no valid session
+        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
     }
 });
 
