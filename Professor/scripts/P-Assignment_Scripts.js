@@ -1,6 +1,6 @@
 
 const storageKey = 'Professor_Assignments_Data';
-const validationDataUrl = '/Website/data/validation_data.json';
+const validationDataUrl = '/data/validation_data.json';
 
 function goBack() {
     window.history.back();
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching data:', error));
     } else {
-        window.location.href = '/Website/Main Page/LoginPage.html'; // Redirect if no valid session
+        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
     }
 });
 
@@ -157,7 +157,7 @@ function removeExam() {
 function finalizeChanges() {
     let data = JSON.parse(localStorage.getItem(storageKey));
 
-    fetch('/Website/data/Professor_Assignments.json', {
+    fetch('/data/Professor_Assignments.json', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userRole = localStorage.getItem('userRole');
 
     if (userID && userRole === 'professor') {
-        fetch('/Website/data/validation_data.json')
+        fetch('/data/validation_data.json')
             .then(response => response.json())
             .then(data => {
                 const professor = data.teachers.find(prof => prof.id == userID);
@@ -17,6 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching professor data:', error));
     } else {
-        window.location.href = '/Website/Main Page/LoginPage.html'; // Redirect if no valid session
+        window.location.href = '/Main Page/LoginPage.html'; // Redirect if no valid session
     }
 });

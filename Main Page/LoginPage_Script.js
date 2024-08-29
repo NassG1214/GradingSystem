@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const professorLoginForm = document.getElementById('professor-login-form');
 
     function validateLogin(email, password, userType) {
-        return fetch('/Website/data/validation_data.json')
+        return fetch('/data/validation_data.json')
             .then(response => response.json())
             .then(data => {
                 const users = data[userType];
@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     studentLoginForm.addEventListener('submit', event => {
-        handleLogin(event, 'students', 'sLogin', '/Website/Student/html/StudentPortal.html');
+        handleLogin(event, 'students', 'sLogin', '/Student/html/StudentPortal.html');
     });
 
     professorLoginForm.addEventListener('submit', event => {
-        handleLogin(event, 'teachers', 'pLogin', '/Website/Professor/html/Professor_Portal.html');
+        handleLogin(event, 'teachers', 'pLogin', '/Professor/html/Professor_Portal.html');
     });
 });
